@@ -1,0 +1,15 @@
+spring:
+  r2dbc:
+    url: r2dbc:pool:mysql://127.0.0.1:3306/movies?useSSL=false
+    username: root
+    password: root
+    pool:
+      initial-size: 100 
+      max-size: 500
+      max-idle-time: 30m
+      validation-query: SELECT 1
+  application:
+    name: movie-service
+logging:
+  level:
+    org.springframework: info
