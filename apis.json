@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "0533c229-6c2d-4ffa-8cb5-fcf698e4d3fc",
+		"name": "Eureka Flux Webclient Demo SpringBoot",
+		"description": "Sample project to demonstrate Discovery of services through Eureka ServerCollection of api's to demonstrate the use of **Eureka** server to perform *service discovery*\n\nAlso it shows some of new Spring Reactive features such **Spring R2DBC** and new **WebClient** which will replace the standard **REST Template** in the upcoming releases.\\\n\nThe folders represent the corresponding individual Spring Boot projects.\nPlease read the *readme.md* for testing the project.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user-service",
+			"item": [
+				{
+					"name": "Get User Data By Id from microservice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get User Data By Id from microservice",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/user/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Salman Shaikh\",\n    \"country\": \"India\",\n    \"movieIds\": [\n        1,\n        2\n    ]\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "movie-service",
+			"item": [
+				{
+					"name": "Get movies from id's from microservice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[1, 2, 3, 4]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/movies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"movies",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get movies from id's from microservice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[1, 2, 3, 4]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/movies/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Matrix\",\n        \"year\": \"1998\",\n        \"rating\": \"9\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Speed\",\n        \"year\": \"1990\",\n        \"rating\": \"8.2\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Terminator\",\n        \"year\": \"1986\",\n        \"rating\": \"9.1\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "reactive-consumer",
+			"item": [
+				{
+					"name": "Get movies from id's using service discovery",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[1, 2, 3, 4]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/movies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"movies",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get movies from id's from microservice Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[1, 2, 3, 4]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/movies/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"movies",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Matrix\",\n        \"year\": \"1998\",\n        \"rating\": \"9\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Speed\",\n        \"year\": \"1990\",\n        \"rating\": \"8.2\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Terminator\",\n        \"year\": \"1986\",\n        \"rating\": \"9.1\"\n    }\n]"
+						},
+						{
+							"name": "Get movies from id's from microservice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[1, 2, 3, 4]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/movies/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"movies",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Matrix\",\n        \"year\": \"1998\",\n        \"rating\": \"9\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Speed\",\n        \"year\": \"1990\",\n        \"rating\": \"8.2\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Terminator\",\n        \"year\": \"1986\",\n        \"rating\": \"9.1\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get user details by id using service discovery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
